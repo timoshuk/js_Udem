@@ -1,6 +1,6 @@
 "use strict";
 
-let money = prompt("Ваш Бюджет на неделю", "0"),
+let money = +prompt("Ваш Бюджет на неделю", "0"),
   time = prompt("Введите дату в формате YYYY-MM-DD", "2019-01-01");
 
 let appData = {
@@ -13,12 +13,23 @@ let appData = {
 };
 
 for (let i = 0; i < 2; i++) {
-  let question1 = prompt(
+  let question = prompt(
     "Введите обязательную статью расходов в этом месяце",
     ""
   );
-  let question2 = prompt("Во сколько обойдется", "");
-  appData.expenses[question1] = question2;
+  let answer = +prompt("Во сколько обойдется", "");
+
+  if (
+    question != "" &&
+    typeof question != null &&
+    answer != "" &&
+    typeof answer != null &&
+    !isNaN(answer)
+  ) {
+    appData.expenses[`${question}`] = answer;
+  } else {
+    i = i - 1;
+  }
 }
 
 let calculate = money / 7;
