@@ -1,9 +1,32 @@
-let arr = ["aaa", "bbb", "ccc", 111];
-let arr2 = [1, 15, 2, 78, 11, 46];
-console.log(arr);
+class Calculator {
+  constructor() {
+    this.data = [];
+    this.sumData = 0;
+    this.mulData = 0;
+  }
+  read() {
+    for (let i = 0; i < 3; i++) {
+      this.data.push(+prompt("enter integer"));
+    }
+  }
 
-arr2.sort(function(a, b) {
-  return b - a;
-});
+  sum() {
+    if (this.data.length === 3) {
+      this.data.forEach(function(el) {
+        this.sumData += el;
+      });
+    }
+  }
 
-console.log(arr2);
+  mul() {
+    if (this.data.length === 3) {
+      this.data.forEach(function(el) {
+        this.mulData *= el;
+      });
+    }
+  }
+}
+
+let calc = new Calculator();
+
+calc.read();
