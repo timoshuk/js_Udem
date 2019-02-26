@@ -1,0 +1,13 @@
+let splitUp = document.getElementById("start");
+let valueData = document.querySelectorAll(".result-table div[class$='-value']");
+let expensesItem = document.querySelectorAll(".expenses-item");
+let btn = document.getElementsByTagName("button");
+let approve = btn[0];
+let approve2 = btn[1];
+let calculate = btn[2];
+let optionalexpensesItem = document.querySelectorAll(".optionalexpenses-item");
+let chooseIncome = document.querySelector(".choose-income");
+let savings = document.querySelector("#savings");
+let sum = document.querySelector("#sum");
+let percent = document.querySelector("#percent");
+let timeData = document.querySelectorAll(".time-data [class$='-value']");
