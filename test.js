@@ -1,36 +1,8 @@
-class Calculator {
-  constructor() {
-    this.data = [];
-    this.sumData = 0;
-    this.mulData = 0;
-  }
-  read() {
-    for (let i = 0; i < 3; i++) {
-      this.data.push(+prompt("enter integer"));
-    }
-  }
+const btn = document.getElementById("btn");
+const txt = document.getElementById("text");
 
-  get sum() {
-    if (this.data.length === 3) {
-      this.data.forEach(function(el) {
-        this.sumData += el;
-      });
-      return this.sumData;
-    }
+console.log(txt);
 
-    return this.sumData;
-  }
-
-  get mul() {
-    if (this.data.length === 3) {
-      this.data.forEach(function(el) {
-        this.mulData *= el;
-      });
-    }
-    return this.mulData;
-  }
-}
-
-let calc = new Calculator();
-
-calc.read();
+btn.addEventListener("click", function() {
+  this.style.display = "none";
+});
