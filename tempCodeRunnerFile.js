@@ -1,32 +1,5 @@
-class Calculator {
-  constructor() {
-    this.data = [];
-    this.sumData = 0;
-    this.mulData = 0;
-  }
-  read() {
-    for (let i = 0; i < 3; i++) {
-      this.data.push(+prompt("enter integer"));
-    }
-  }
+const arr = [1, 15, 22, 15, 98, 63, 46, 1, 15, 0, 63];
 
-  sum() {
-    if (this.data.length === 3) {
-      this.data.forEach(function(el) {
-        this.sumData += el;
-      });
-    }
-  }
+const narr = [...new Set(arr)].sort();
 
-  mul() {
-    if (this.data.length === 3) {
-      this.data.forEach(function(el) {
-        this.mulData *= el;
-      });
-    }
-  }
-}
-
-let calc = new Calculator();
-
-calc.read();
+console.log(narr);
