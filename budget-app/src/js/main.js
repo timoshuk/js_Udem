@@ -1,6 +1,6 @@
 let splitUp = document.getElementById("start");
 let valueData = document.querySelectorAll(".result-table div[class$='-value']");
-let budgetValue = valueData[0];
+let expensesValue = valueData[3];
 let expensesItem = document.querySelectorAll(".expenses-item");
 let btn = document.getElementsByTagName("button");
 let approve = btn[0];
@@ -40,4 +40,24 @@ splitUp.addEventListener("click", function() {
   yearValue.value = new Date(Date.parse(time)).getFullYear();
   monthValue.value = new Date(Date.parse(time)).getMonth() + 1;
   dayValue.value = new Date(Date.parse(time)).getDate();
+});
+
+// ================================
+
+approve.addEventListener("click", function() {
+  let sum = 0;
+
+  for (let i = 0; i < expensesItem.length; i++) {
+    let a = expensesItem[i].value;
+    let b = expensesItem[++i].value;
+
+    if (typeof a != null && typeof b != null && a != "" && b != "") {
+      appData.expenses[a] = b;
+      sum += +b;
+    } else {
+      i -= 1;
+    }
+  }
+
+  expensesValue.textContent = sum;
 });
