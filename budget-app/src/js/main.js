@@ -1,12 +1,17 @@
-20 хвилин
+// 34 хвилин
 
 let splitUp = document.getElementById("start");
 let valueData = document.querySelectorAll(".result-table div[class$='-value']");
+let budgetValue = valueData[0];
+let dayBudgetValue = valueData[1];
+let levelValue = valueData[2];
 let expensesValue = valueData[3];
+let optionalExpensesValue = valueData[4];
+let incomeValue = valueData[5];
 let expensesItem = document.querySelectorAll(".expenses-item");
 let btn = document.getElementsByTagName("button");
 let approve = btn[0];
-let approve2 = btn[1];
+let optionalExpensesBtn = btn[1];
 let calculate = btn[2];
 let optionalexpensesItem = document.querySelectorAll(".optionalexpenses-item");
 let chooseIncome = document.querySelector(".choose-income");
@@ -19,12 +24,13 @@ let monthValue = timeData[1];
 let dayValue = timeData[2];
 
 let appData = {
-  budget: 0,
+  budget: undefined,
   expenses: {},
   optionalExpenses: {},
   income: [],
   timeData: "",
-  savings: true
+  savings: true,
+  moneyPerDay: 0
 };
 
 // Events
@@ -62,4 +68,43 @@ approve.addEventListener("click", function() {
   }
 
   expensesValue.textContent = sum;
+});
+
+// ================================================
+
+optionalExpensesBtn.addEventListener("click", function() {
+  for (let i = 0; i < optionalexpensesItem.length; i++) {
+    let answer = optionalexpensesItem[i].value;
+    appData.optionalExpenses[i] = answer;
+    optionalExpensesValue.textContent += appData.optionalExpenses[i] + " ";
+  }
+});
+
+// ==========================================
+
+calculate.addEventListener("click", function() {
+  if (appData.budget != undefined) {
+    appData.moneyPerDay = (appData.budget / 30).toFixed();
+    dayBudgetValue.textContent = appData.moneyPerDay;
+
+    if (appData.moneyPerDay < 100) {
+      levelValue.textContent = "Мінімальний Рівень достатку";
+    } else if (appData.moneyPerDay > 100 && appData.moneyPerDay < 2000) {
+      levelValue.textContent = "Середній Рівень достатку";
+    } else if (appData.moneyPerDay > 2000) {
+      levelValue.textContent = "Високий Рівень достатку";
+    } else {
+      levelValue.textContent = "Виникла помилка";
+    }
+  } else {
+    dayBudgetValue.textContent = "Ви не вказали бюджет на місяць";
+  }
+});
+
+// ===========================================
+
+chooseIncome.addEventListener("input", function() {
+  let items = this.value;
+  appData.income = items.split(", ");
+  incomeValue.textContent = appData.income;
 });
