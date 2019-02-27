@@ -1,3 +1,5 @@
+20 хвилин
+
 let splitUp = document.getElementById("start");
 let valueData = document.querySelectorAll(".result-table div[class$='-value']");
 let expensesValue = valueData[3];
