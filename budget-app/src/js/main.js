@@ -8,6 +8,8 @@ let levelValue = valueData[2];
 let expensesValue = valueData[3];
 let optionalExpensesValue = valueData[4];
 let incomeValue = valueData[5];
+let monthSevings = valueData[6];
+let yearSevings = valueData[7];
 let expensesItem = document.querySelectorAll(".expenses-item");
 let btn = document.getElementsByTagName("button");
 let approve = btn[0];
@@ -28,9 +30,11 @@ let appData = {
   expenses: {},
   optionalExpenses: {},
   income: [],
-  timeData: "",
-  savings: true,
-  moneyPerDay: 0
+  timeData: undefined,
+  savings: false,
+  moneyPerDay: undefined,
+  monthIncome: undefined,
+  yearIncome: undefined
 };
 
 // Events
@@ -107,4 +111,37 @@ chooseIncome.addEventListener("input", function() {
   let items = this.value;
   appData.income = items.split(", ");
   incomeValue.textContent = appData.income;
+});
+
+// =========================================
+
+savings.addEventListener("click", function() {
+  appData.savings ? (appData.savings = false) : (appData.savings = true);
+});
+
+// ==========================================
+sum.addEventListener("input", function() {
+  if (appData.savings) {
+    let sm = +sum.value;
+    let pr = +percent.value;
+    appData.monthIncome = (sm / 100 / 12) * pr;
+    appData.yearIncome = (sm / 100) * pr;
+
+    monthSevings.textContent = appData.monthIncome.toFixed(1);
+    yearSevings.textContent = appData.yearIncome.toFixed(1);
+  }
+});
+
+// ==============================================
+
+percent.addEventListener("input", function() {
+  if (appData.savings) {
+    let sm = +sum.value;
+    let pr = +percent.value;
+    appData.monthIncome = (sm / 100 / 12) * pr;
+    appData.yearIncome = (sm / 100) * pr;
+
+    monthSevings.textContent = appData.monthIncome.toFixed(1);
+    yearSevings.textContent = appData.yearIncome.toFixed(1);
+  }
 });
