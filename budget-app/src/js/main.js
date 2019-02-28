@@ -52,6 +52,10 @@ splitUp.addEventListener("click", function() {
   yearValue.value = new Date(Date.parse(time)).getFullYear();
   monthValue.value = new Date(Date.parse(time)).getMonth() + 1;
   dayValue.value = new Date(Date.parse(time)).getDate();
+
+  [].forEach.call(btn, function(item) {
+    item.disabled = false;
+  });
 });
 
 // ================================
@@ -87,8 +91,15 @@ optionalExpensesBtn.addEventListener("click", function() {
 // ==========================================
 
 calculate.addEventListener("click", function() {
+  let trt = 0;
+  for (key in appData.expenses) {
+    trt += +appData.expenses[key];
+
+    console.log(trt);
+  }
+
   if (appData.budget != undefined) {
-    appData.moneyPerDay = (appData.budget / 30).toFixed();
+    appData.moneyPerDay = ((appData.budget - trt) / 30).toFixed();
     dayBudgetValue.textContent = appData.moneyPerDay;
 
     if (appData.moneyPerDay < 100) {
