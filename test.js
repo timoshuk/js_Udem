@@ -1,5 +1,18 @@
-let el = document.querySelector(".inner");
+let item = document.querySelector(".inner");
+let t = Date.now();
 
-console.log(el);
+let time = setInterval(function() {
+  let r = Date.now() - t;
 
-let timer = setInterval(function() {}, 50000 / 50);
+  if (r > 3000) {
+    clearInterval(time);
+    return;
+  }
+
+  animateEl(item, r);
+}, 20);
+
+function animateEl(el, timeData) {
+  el.style.left = timeData / 5 + "px";
+  el.style.top = timeData / 5 + "px";
+}
