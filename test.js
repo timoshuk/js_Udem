@@ -1,5 +1,5 @@
-const arr = [1, 15, 22, 15, 98, 63, 46, 1, 15, 0, 63];
+let el = document.querySelector(".inner");
 
-const narr = [...new Set(arr)].sort();
+console.log(el);
 
-console.log(narr);
+let timer = setInterval(function() {}, 50000 / 50);
