@@ -1,17 +1,9 @@
 .wrapper {
   position: relative;
-  min-width: 70%;
-  min-height: 80vh;
+  width: 700px;
+  height: 700px;
   margin-left: auto;
   margin-right: auto;
-  background: aqua;
-}
-
-.head:hover,
-.head:active {
-  font-weight: 700;
-}
-
-.dnone {
-  display: none;
+  font-size: 30px;
+  font-weight: bold;
 }
