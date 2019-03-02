@@ -1,18 +1,9 @@
-let item = document.querySelector(".inner");
-let t = Date.now();
+let wrap = document.querySelector(".wrapper");
 
-let time = setInterval(function() {
-  let r = Date.now() - t;
-
-  if (r > 3000) {
-    clearInterval(time);
+wrap.addEventListener("click", function(e) {
+  let el = e.target;
+  if (el.classList.contains("hide")) {
+    el.parentElement.classList.add("hiden");
     return;
   }
-
-  animateEl(item, r);
-}, 20);
-
-function animateEl(el, timeData) {
-  el.style.left = timeData / 5 + "px";
-  el.style.top = timeData / 5 + "px";
-}
+});
