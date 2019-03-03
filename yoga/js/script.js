@@ -71,3 +71,21 @@ function renderTimer(id, deadline) {
 }
 
 renderTimer("timer", date);
+
+// popup
+
+let popBtn = document.querySelector(".more");
+let popup = document.querySelector(".overlay");
+let popupClose = document.querySelector(".popup-close");
+
+popBtn.addEventListener("click", function() {
+  popup.style.display = "block";
+  this.classList.add("more-splash");
+  document.body.style.overflow = "hidden";
+});
+
+popupClose.addEventListener("click", function() {
+  popup.style.display = "none";
+  popBtn.classList.remove("more-splash");
+  document.body.style.overflow = "";
+});
