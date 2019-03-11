@@ -89,3 +89,52 @@ popupClose.addEventListener("click", function() {
   popBtn.classList.remove("more-splash");
   document.body.style.overflow = "";
 });
+
+//Slider
+//================================
+let slideShow = 0;
+let sliderContainer = document.querySelector(".slider");
+let allSlides = sliderContainer.querySelectorAll(".slider-item");
+let prevBtn = sliderContainer.querySelector(".prev");
+let nextBtn = sliderContainer.querySelector(".next");
+let sliderDots = sliderContainer.querySelector(".slider-dots");
+let sliderDotsItem = sliderDots.querySelectorAll(".dot");
+
+function showSlide() {
+  if (slideShow < 0) {
+    slideShow = allSlides.length - 1;
+  } else if (slideShow >= allSlides.length) {
+    slideShow = 0;
+  }
+
+  allSlides.forEach(function(item) {
+    item.style.display = "none";
+  });
+  allSlides[slideShow].style.display = "block";
+
+  sliderDotsItem.forEach(function(el) {
+    el.classList.remove("dot-active");
+  });
+  sliderDotsItem[slideShow].classList.add("dot-active");
+}
+
+showSlide();
+
+prevBtn.addEventListener("click", function() {
+  --slideShow;
+  showSlide();
+});
+
+nextBtn.addEventListener("click", function() {
+  ++slideShow;
+  showSlide();
+});
+
+sliderDots.addEventListener("click", function(el) {
+  sliderDotsItem.forEach(function(item, i) {
+    if (el.target === item) {
+      slideShow = i;
+      showSlide();
+    }
+  });
+});
