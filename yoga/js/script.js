@@ -138,3 +138,47 @@ sliderDots.addEventListener("click", function(el) {
     }
   });
 });
+
+// Calculator
+// ================================================
+
+let peopleCalc = document.querySelectorAll(".counter-block-input")[0];
+let dayCalc = document.querySelectorAll(".counter-block-input")[1];
+let total = document.getElementById("total");
+let selectBase = document.getElementById("select");
+
+let personCount = 0,
+  dayCount = 0;
+totalCount = 0;
+
+peopleCalc.addEventListener("change", function() {
+  personCount = +this.value;
+
+  if (personCount > 0 && dayCount > 0) {
+    totalCount = personCount * 4000 * dayCount;
+    total.innerHTML = totalCount;
+  } else {
+    total.innerHTML = 0;
+  }
+});
+
+dayCalc.addEventListener("change", function() {
+  dayCount = +this.value;
+
+  if (personCount > 0 && dayCount > 0) {
+    totalCount = personCount * 4000 * dayCount;
+    total.innerHTML = totalCount;
+  } else {
+    total.innerHTML = 0;
+  }
+});
+
+selectBase.addEventListener("change", function() {
+  if (dayCount <= 0 || personCount <= 0) {
+    total.innerHTML = 0;
+  } else {
+    let t = totalCount;
+
+    total.innerHTML = t * this.options[this.selectedIndex].value;
+  }
+});
